@@ -1,2 +1,2 @@
 #!/bin/bash
-kill $(cat jFroniusTBot.pid.file)
+kill $(cat /Users/admin/JFroniusTBot/jFroniusTBot.pid.file)

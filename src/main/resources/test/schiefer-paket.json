@@ -1,0 +1,131 @@
+{
+    "id": 1798,
+    "parent_id": 0,
+    "number": "1194",
+    "order_key": "wc_order_gK2opcTzIgmsc",
+    "created_via": "checkout",
+    "version": "4.8.0",
+    "status": "on-hold",
+    "currency": "EUR",
+    "date_created": "2020-12-18T10:06:20",
+    "date_created_gmt": "2020-12-18T10:06:20",
+    "date_modified": "2020-12-18T10:06:20",
+    "date_modified_gmt": "2020-12-18T10:06:20",
+    "discount_total": "0.00",
+    "discount_tax": "0.00",
+    "shipping_total": "0.00",
+    "shipping_tax": "0.00",
+    "cart_tax": "0.00",
+    "total": "142.80",
+    "total_tax": "0.00",
+    "prices_include_tax": false,
+    "customer_id": 0,
+    "customer_ip_address": "92.62.27.239",
+    "customer_user_agent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.0.2 Safari\/605.1.15",
+    "customer_note": "",
+    "billing": {
+        "first_name": "Hubert",
+        "last_name": "Baumgartner",
+        "company": "",
+        "address_1": "Dr. Galambos-Gasse 12",
+        "address_2": "",
+        "city": "Unterwart",
+        "state": "",
+        "postcode": "7502",
+        "country": "AT",
+        "email": "bertl.baumgartner@gmx.de",
+        "phone": "69911641011"
+    },
+    "shipping": {
+        "first_name": "Hubert",
+        "last_name": "Baumgartner",
+        "company": "",
+        "address_1": "Dr. Galambos-Gasse 12",
+        "address_2": "",
+        "city": "Unterwart",
+        "state": "",
+        "postcode": "7502",
+        "country": "AT"
+    },
+    "payment_method": "bacs",
+    "payment_method_title": "direkte bank\u00fcberweisung",
+    "transaction_id": "",
+    "date_paid": null,
+    "date_paid_gmt": null,
+    "date_completed": null,
+    "date_completed_gmt": null,
+    "cart_hash": "0660c54e6e83220000483ea8ffea84ed",
+    "meta_data": [
+        {
+            "id": 18979,
+            "key": "_order_number",
+            "value": "1194"
+        },
+        {
+            "id": 19013,
+            "key": "is_vat_exempt",
+            "value": "no"
+        },
+        {
+            "id": 19017,
+            "key": "woo_discount_log",
+            "value": "{\"price_discount\":\"{\"line_discount\":{\"cda72177eba360ff16b7f836e2754370\":[]}}\",\"cart_discount\":[]}"
+        }
+    ],
+    "line_items": [
+        {
+            "id": 1168,
+            "name": "paket schiefer.ungeschminkt (maischevergoren)",
+            "product_id": 1540,
+            "variation_id": 0,
+            "quantity": 1,
+            "tax_class": "",
+            "subtotal": "142.80",
+            "subtotal_tax": "0.00",
+            "total": "142.80",
+            "total_tax": "0.00",
+            "taxes": [],
+            "meta_data": [
+                {
+                    "id": 10341,
+                    "key": "_fly_woo_discount_price_rules",
+                    "value": [],
+                    "display_key": "_fly_woo_discount_price_rules",
+                    "display_value": []
+                }
+            ],
+            "sku": "431-353-281-312-272-345",
+            "price": 142.80000000000001,
+            "parent_name": null
+        }
+    ],
+    "tax_lines": [],
+    "shipping_lines": [
+        {
+            "id": 1169,
+            "method_title": "gratis ab 6 flaschen",
+            "method_id": "wbs",
+            "instance_id": "0",
+            "total": "0.00",
+            "total_tax": "0.00",
+            "taxes": [],
+            "meta_data": []
+        }
+    ],
+    "fee_lines": [],
+    "coupon_lines": [],
+    "refunds": [],
+    "currency_symbol": "\u20ac",
+    "_links": {
+        "self": [
+            {
+                "href": "https:\/\/www.weinbau-schiefer.at\/wp-json\/wc\/v3\/orders\/1798"
+            }
+        ],
+        "collection": [
+            {
+                "href": "https:\/\/www.weinbau-schiefer.at\/wp-json\/wc\/v3\/orders"
+            }
+        ]
+    }
+}

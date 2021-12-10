@@ -22,9 +22,19 @@ public class Controller {
 	@GetMapping(path = "/getData", produces = "application/json")
 	public String getData() {
 
-		FroniusData fd = FroniusController.getData();
+		FroniusController fc = new FroniusController();
+		FroniusData fd = fc.getData();
 
 		return "test";
+	}
+
+	@GetMapping(path = "/status", produces = "application/json")
+	public String getStatus() {
+
+		FroniusController fc = new FroniusController();
+		String fd = fc.getSatus();
+
+		return fd;
 	}
 
 

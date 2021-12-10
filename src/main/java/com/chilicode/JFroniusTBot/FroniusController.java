@@ -8,14 +8,10 @@ import java.util.Map;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.apache.commons.httpclient.HttpClient;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
@@ -25,13 +21,23 @@ import org.apache.http.util.EntityUtils;
 
 public class FroniusController {
 
+    String fronius_base_url;
+
+
     public FroniusController(){
+        fronius_base_url = System.getenv("FRONIUS");
+        System.out.println(fronius_base_url);
+
+        Map <String, String> map = System.getenv();
+
+        System.out.println(map);
+
     }
 
-    public static FroniusData getData(){
+    public FroniusData getData(){
         System.out.println("da bin ich");
 
-        String urlString = "http://10.0.0.22/solar_api/v1/GetPowerFlowRealtimeData.fcgi";
+        String urlString = "http://" + fronius_base_url + "/solar_api/v1/GetPowerFlowRealtimeData.fcgi";
 
         try {
             Map<String, String[]> returnValue =  executeRequest(urlString);
@@ -85,5 +91,11 @@ public class FroniusController {
 
    
         return map;
+    }
+
+    public String getSatus() {
+    
+
+        return "Fronius IP = " + fronius_base_url;
     }
 }

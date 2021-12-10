@@ -22,6 +22,8 @@ public class Controller {
 	@GetMapping(path = "/getData", produces = "application/json")
 	public String getData() {
 
+		FroniusData fd = FroniusController.getData();
+
 		return "test";
 	}
 

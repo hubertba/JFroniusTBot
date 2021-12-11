@@ -26,6 +26,7 @@ public class TelegramBotController {
 
     public static void sendMessage(String message){
         
+        
 
         List<BasicNameValuePair> data = new ArrayList<BasicNameValuePair>();
         data.add(new BasicNameValuePair("chat_id", "-" + getTcid()));

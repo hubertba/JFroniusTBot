@@ -23,10 +23,10 @@ import org.apache.http.util.EntityUtils;
 
 public class HTTPHelper {
 
-    public static Map<String, String[]> executeGetRequest(String urlString) throws IOException {
+    public static String executeGetRequest(String urlString) throws IOException {
         System.out.println("Execute: " + urlString);
 
-        Map<String, String[]> map = new HashMap<>();
+        String result = "";
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
@@ -47,12 +47,13 @@ public class HTTPHelper {
                 HttpEntity entity = response.getEntity();
                 if (entity != null) {
                     // return it as a String
-                    String result = EntityUtils.toString(entity);
+                    result = EntityUtils.toString(entity);
                     System.out.println(result);
 
+                    // convert to map for debugging
                     Type mapType = new TypeToken<Map<String, Map>>() {
                     }.getType();
-                    map = new Gson().fromJson(result, mapType);
+                    Map<String, String[]> map = new Gson().fromJson(result, mapType);
 
                 }
 
@@ -63,10 +64,11 @@ public class HTTPHelper {
             httpClient.close();
         }
 
-        return map;
+        return result;
     }
 
-    public static Map<String, String[]> executePostRequest(String urlString, List<BasicNameValuePair> data) throws IOException {
+    public static Map<String, String[]> executePostRequest(String urlString, List<BasicNameValuePair> data)
+            throws IOException {
         System.out.println("Execute: " + urlString);
 
         Map<String, String[]> map = new HashMap<>();
@@ -78,18 +80,14 @@ public class HTTPHelper {
             HttpPost request = new HttpPost(urlString);
 
             UrlEncodedFormEntity form = new UrlEncodedFormEntity(data);
-  
+
             request.setEntity(form);
-          
 
             CloseableHttpResponse response = httpClient.execute(request);
 
             try {
 
                 // Get HttpResponse Status
-                System.out.println(response.getProtocolVersion()); // HTTP/1.1
-                System.out.println(response.getStatusLine().getStatusCode()); // 200
-                System.out.println(response.getStatusLine().getReasonPhrase()); // OK
                 System.out.println(response.getStatusLine().toString()); // HTTP/1.1 200 OK
 
                 HttpEntity entity = response.getEntity();
@@ -97,11 +95,6 @@ public class HTTPHelper {
                     // return it as a String
                     String result = EntityUtils.toString(entity);
                     System.out.println(result);
-
-                    Type mapType = new TypeToken<Map<String, Map>>() {
-                    }.getType();
-                    map = new Gson().fromJson(result, mapType);
-
                 }
 
             } finally {
@@ -113,5 +106,5 @@ public class HTTPHelper {
 
         return map;
     }
-    
+
 }

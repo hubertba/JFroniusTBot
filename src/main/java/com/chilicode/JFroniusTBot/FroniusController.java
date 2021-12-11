@@ -1,19 +1,10 @@
 package com.chilicode.JFroniusTBot;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.Map;
 
+import com.chilicode.JFroniusTBot.model.PowerFlowRealtimeData;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 
 public class FroniusController {
 
@@ -29,28 +20,63 @@ public class FroniusController {
 
     }
 
-    public FroniusData getData() {
-        String power = "-1";
+    public String getData() {
+        String ppv = "";
 
         String urlString = "http://" + fronius_base_url + "/solar_api/v1/GetPowerFlowRealtimeData.fcgi";
 
         try {
-            Map<String, String[]> returnValue = HTTPHelper.executeGetRequest(urlString);
+            String json = HTTPHelper.executeGetRequest(urlString);
 
+            PowerFlowRealtimeData data = new Gson().fromJson(json, PowerFlowRealtimeData.class);
 
-            power = "testPower";
-            
+            ppv = data.getBody().getData().getSite().getPPv();
+            if (ppv == null) {
+                ppv = "null";
+            }
+            System.out.println(ppv);
+
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        return new FroniusData(power);
+        return ppv;
     }
 
+    public PowerFlowRealtimeData getPowerFlowRealtimeData() {
+        String urlString = "http://" + fronius_base_url + "/solar_api/v1/GetPowerFlowRealtimeData.fcgi";
+        PowerFlowRealtimeData data = null; 
 
+        try {
+            String json = HTTPHelper.executeGetRequest(urlString);
+            data = new Gson().fromJson(json, PowerFlowRealtimeData.class);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return data;
+    }
+
+    public String getCurrentPowerMessage(PowerFlowRealtimeData data){
+
+        String ppv = data.getBody().getData().getSite().getPPv();
+        if (ppv == null) {
+            return "Zur Zeit wird kein Strom erzeugt :-(";
+        }
+        return "Zur Zeit werden " + ppv + "Watt erezugt.";
+    } 
 
     public String getSatus() {
         return "Fronius IP = " + fronius_base_url;
+    }
+
+    public String getTotalPowerMessage(PowerFlowRealtimeData data) {
+        Integer etotal = data.getBody().getData().getInverters().get1().getETotal();
+        
+        //convert to MegaWatt
+        Float megawatt = etotal.floatValue() / 1000000; 
+
+        return "Seit beginn wurden "+  megawatt +" MegaWatt erezugt.";
     }
 }

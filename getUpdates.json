@@ -1,0 +1,111 @@
+{
+    "ok": true,
+    "result": [
+      {
+        "update_id": 948610781,
+        "message": {
+          "message_id": 4,
+          "from": {
+            "id": 67882664,
+            "is_bot": false,
+            "first_name": "Hubert",
+            "last_name": "Baumgartner",
+            "username": "hubertba",
+            "language_code": "en"
+          },
+          "chat": {
+            "id": -617968821,
+            "title": "Sonnenstrom",
+            "type": "group",
+            "all_members_are_administrators": false
+          },
+          "date": 1639156401,
+          "migrate_to_chat_id": -1001743792440
+        }
+      },
+      {
+        "update_id": 948610782,
+        "my_chat_member": {
+          "chat": {
+            "id": -1001743792440,
+            "title": "Sonnenstrom",
+            "type": "supergroup"
+          },
+          "from": {
+            "id": 67882664,
+            "is_bot": false,
+            "first_name": "Hubert",
+            "last_name": "Baumgartner",
+            "username": "hubertba",
+            "language_code": "en"
+          },
+          "date": 1639156401,
+          "old_chat_member": {
+            "user": {
+              "id": 5072333946,
+              "is_bot": true,
+              "first_name": "CleanPower",
+              "username": "CleanPowerBot"
+            },
+            "status": "left"
+          },
+          "new_chat_member": {
+            "user": {
+              "id": 5072333946,
+              "is_bot": true,
+              "first_name": "CleanPower",
+              "username": "CleanPowerBot"
+            },
+            "status": "member"
+          }
+        }
+      },
+      {
+        "update_id": 948610783,
+        "my_chat_member": {
+          "chat": {
+            "id": -1001743792440,
+            "title": "Sonnenstrom",
+            "type": "supergroup"
+          },
+          "from": {
+            "id": 67882664,
+            "is_bot": false,
+            "first_name": "Hubert",
+            "last_name": "Baumgartner",
+            "username": "hubertba",
+            "language_code": "en"
+          },
+          "date": 1639156437,
+          "old_chat_member": {
+            "user": {
+              "id": 5072333946,
+              "is_bot": true,
+              "first_name": "CleanPower",
+              "username": "CleanPowerBot"
+            },
+            "status": "member"
+          },
+          "new_chat_member": {
+            "user": {
+              "id": 5072333946,
+              "is_bot": true,
+              "first_name": "CleanPower",
+              "username": "CleanPowerBot"
+            },
+            "status": "administrator",
+            "can_be_edited": false,
+            "can_manage_chat": true,
+            "can_change_info": true,
+            "can_delete_messages": true,
+            "can_invite_users": true,
+            "can_restrict_members": true,
+            "can_pin_messages": true,
+            "can_promote_members": false,
+            "can_manage_voice_chats": true,
+            "is_anonymous": false
+          }
+        }
+      }
+    ]
+  }

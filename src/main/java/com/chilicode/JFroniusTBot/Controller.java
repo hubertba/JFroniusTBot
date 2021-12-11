@@ -25,8 +25,12 @@ public class Controller {
 		FroniusController fc = new FroniusController();
 		FroniusData fd = fc.getData();
 
+		TelegramBotController tbc = new TelegramBotController();
+		tbc.sendMessage(fd.getPower());
+
 		return "test";
 	}
+
 
 	@GetMapping(path = "/status", produces = "application/json")
 	public String getStatus() {
@@ -34,7 +38,10 @@ public class Controller {
 		FroniusController fc = new FroniusController();
 		String fd = fc.getSatus();
 
-		return fd;
+		TelegramBotController tb = new TelegramBotController();
+
+
+		return fd + "\n" + tb.getTcid() + "\n" + tb.getTbk();
 	}
 
 

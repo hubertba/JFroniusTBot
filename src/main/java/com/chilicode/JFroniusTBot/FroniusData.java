@@ -2,17 +2,17 @@ package com.chilicode.JFroniusTBot;
 
 public class FroniusData {
 
-int power;
+String power;
 
-    public FroniusData(int _power){
+    public FroniusData(String _power){
         power = _power;
     }
 
-    public int getPower() {
+    public String getPower() {
         return power;
     }
     
-    public void setPower(int power) {
+    public void setPower(String power) {
         this.power = power;
     }
 }

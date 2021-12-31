@@ -10,13 +10,13 @@ public class Site {
 
     @SerializedName("E_Day")
     @Expose
-    private Integer eDay;
+    private Float eDay;
     @SerializedName("E_Total")
     @Expose
-    private Integer eTotal;
+    private Float eTotal;
     @SerializedName("E_Year")
     @Expose
-    private Integer eYear;
+    private Float eYear;
     @SerializedName("Meter_Location")
     @Expose
     private String meterLocation;
@@ -42,27 +42,27 @@ public class Site {
     @Expose
     private String relSelfConsumption;
 
-    public Integer getEDay() {
+    public Float getEDay() {
         return eDay;
     }
 
-    public void setEDay(Integer eDay) {
+    public void setEDay(Float eDay) {
         this.eDay = eDay;
     }
 
-    public Integer getETotal() {
+    public Float getETotal() {
         return eTotal;
     }
 
-    public void setETotal(Integer eTotal) {
+    public void setETotal(Float eTotal) {
         this.eTotal = eTotal;
     }
 
-    public Integer getEYear() {
+    public Float getEYear() {
         return eYear;
     }
 
-    public void setEYear(Integer eYear) {
+    public void setEYear(Float eYear) {
         this.eYear = eYear;
     }
 

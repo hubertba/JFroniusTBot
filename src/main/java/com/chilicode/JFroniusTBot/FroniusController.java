@@ -72,10 +72,10 @@ public class FroniusController {
     }
 
     public String getTotalPowerMessage(PowerFlowRealtimeData data) {
-        Integer etotal = data.getBody().getData().getInverters().get1().getETotal();
+        Float etotal = data.getBody().getData().getInverters().get1().getETotal();
         
         //convert to MegaWatt
-        Float megawatt = etotal.floatValue() / 1000000; 
+        Float megawatt = etotal / 1000000; 
 
         return "Seit beginn wurden "+  megawatt +" MegaWatt erezugt.";
     }

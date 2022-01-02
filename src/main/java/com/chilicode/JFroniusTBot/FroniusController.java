@@ -64,7 +64,7 @@ public class FroniusController {
         if (ppv == null) {
             return "Zur Zeit wird kein Strom erzeugt :-(";
         }
-        return "Zur Zeit werden " + ppv + "Watt erezugt.";
+        return "Zur Zeit werden " + ppv + "Watt erzeugt.";
     } 
 
     public String getSatus() {

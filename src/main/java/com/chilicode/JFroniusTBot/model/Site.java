@@ -34,7 +34,7 @@ public class Site {
     private String pLoad;
     @SerializedName("P_PV")
     @Expose
-    private String pPv;
+    private Float pPv;
     @SerializedName("rel_Autonomy")
     @Expose
     private String relAutonomy;
@@ -106,11 +106,11 @@ public class Site {
         this.pLoad = pLoad;
     }
 
-    public String getPPv() {
+    public Float getPPv() {
         return pPv;
     }
 
-    public void setPPv(String pPv) {
+    public void setPPv(Float pPv) {
         this.pPv = pPv;
     }
 

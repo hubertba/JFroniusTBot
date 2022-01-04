@@ -16,15 +16,15 @@ public class TelegramBotController {
         tcid = System.getenv("TCID");
     }
 
-    public static String getTbk() {
+    public String getTbk() {
         return tbk;
     }
 
-    public static String getTcid() {
+    public String getTcid() {
         return tcid;
     }
 
-    public static void sendMessage(String message){
+    public void sendMessage(String message){
         
         
 

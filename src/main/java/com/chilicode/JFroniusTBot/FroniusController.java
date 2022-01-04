@@ -30,7 +30,7 @@ public class FroniusController {
 
             PowerFlowRealtimeData data = new Gson().fromJson(json, PowerFlowRealtimeData.class);
 
-            ppv = data.getBody().getData().getSite().getPPv();
+            ppv = data.getBody().getData().getSite().getPPv().toString();
             if (ppv == null) {
                 ppv = "null";
             }
@@ -60,12 +60,20 @@ public class FroniusController {
 
     public String getCurrentPowerMessage(PowerFlowRealtimeData data){
 
-        String ppv = data.getBody().getData().getSite().getPPv();
+        Float ppv = data.getBody().getData().getSite().getPPv();
         if (ppv == null) {
             return "Zur Zeit wird kein Strom erzeugt :-(";
         }
-        return "Zur Zeit werden " + ppv + "Watt erzeugt.";
+        return "Zur Zeit werden " + ppv.toString() + "Watt erzeugt.";
     } 
+
+    public Float getCurrentPower(PowerFlowRealtimeData data){
+
+        Float ppv = data.getBody().getData().getSite().getPPv();
+    
+        return ppv;
+    } 
+
 
     public String getSatus() {
         return "Fronius IP = " + fronius_base_url;

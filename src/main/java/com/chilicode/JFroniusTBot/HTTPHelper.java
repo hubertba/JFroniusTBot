@@ -12,10 +12,12 @@ import com.google.gson.reflect.TypeToken;
 
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.http.HttpEntity;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
@@ -23,7 +25,7 @@ import org.apache.http.util.EntityUtils;
 
 public class HTTPHelper {
 
-    public static String executeGetRequest(String urlString) throws IOException {
+    public static String executeGetRequest(String urlString){
         System.out.println("Execute: " + urlString);
 
         String result = "";
@@ -60,8 +62,25 @@ public class HTTPHelper {
             } finally {
                 response.close();
             }
+        } catch (ClientProtocolException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (HttpHostConnectException e) {
+            // TODO Auto-generated catch block
+            System.out.println("no connection");
+            e.printStackTrace();
+            return "no connection";
+        }
+         catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         } finally {
-            httpClient.close();
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
 
         return result;

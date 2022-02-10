@@ -77,6 +77,6 @@ public class FroniusController {
         // convert to MegaWatt
         Float megawatt = etotal / 1000000;
 
-        return "Seit beginn wurden " + megawatt + " MegaWatt erezugt.";
+        return "Seit beginn wurden " + megawatt + " MegaWatt erzeugt.";
     }
 }

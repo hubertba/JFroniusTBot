@@ -8,3 +8,6 @@ export FRONIUS=ip of fronius
 
 export TBK=token
 export TCID=chatid
+
+
+huhuh das ist ein test

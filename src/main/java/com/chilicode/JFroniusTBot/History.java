@@ -34,7 +34,7 @@ public class History {
 
     private static History history;
     
-    public History(){}
+    private History(){}
     
     //static block initialization for exception handling
     static{
@@ -45,7 +45,9 @@ public class History {
         }
     }
     
-    public static History getInstance(){
+    public static synchronized History getInstance(){
+        if (history == null)
+        history=new History();
         return history;
     }
 

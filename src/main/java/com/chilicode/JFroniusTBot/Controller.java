@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.chilicode.JFroniusTBot.model.PowerFlowRealtimeData;
 
+import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -88,64 +89,58 @@ public class Controller {
 
 		FroniusController fc = new FroniusController();
 		PowerFlowRealtimeData data = fc.getPowerFlowRealtimeData();
-		String currentPower = "";
+
 		Float cP = 0.0f;
 		Float pP = 0.0f;
+		String message = "";
+
 		if ( history != null){
 			pP = history.getCurrentPower();
 		}
 		history.setLastResponse(new Date());
 		if (data == null){
 			history.setRunning(false);
-			history.setCurrentPower(0.0f);
+			history.setCurrentPower(0.0f); 
+			message = "nichts geht mehr .... gute nacht";
 		}else{
-			currentPower = fc.getCurrentPowerMessage(data);
-			
+
 			cP = fc.getCurrentPower(data);
-			history.setLastResponse(new Date());
-			history.setCurrentPower(cP);
-			history.setRunning(true);
-		}
 
-		String message = "";
-		TelegramBotController tbc = new TelegramBotController();
+			if ( cP < 1000.0f && history.getRunning() == false ) {
+				//set running
+				history.setLastResponse(new Date());
+				history.setCurrentPower(cP);
+				history.setRunning(true);
+				message = "up and running  --- " + fc.getCurrentPowerMessage(data);
+			}
 
-		tbc.sendMessage(currentPower);
-		
-		if ( cP > pP){
+			if ( java.lang.Math.abs(cP - pP) > 1000f){
+				history.setLastResponse(new Date());
+				history.setCurrentPower(cP);
+				history.setRunning(true);
+	
+				
+				if ( between(cP, 1000f, 3000f)){
+					message = "start washing --- " + fc.getCurrentPowerMessage(data);
+				}	
+				
+				if ( between(cP, 3000f, 10000f)){
+					message = "charge car --- " + fc.getCurrentPowerMessage(data);
+				}	
+				
+			}
 			
 		}
-
-
-		if ( cP > 0.0f) {
-			//set running
-			//history.setRunning(true);
-			message = "up and running";
-		}else{
-			//history.setRunning(false);
-			message = "not running";
-		}
-
-		if ( !message.equals("")){
+		
+		if (!message.equals("")){
+			TelegramBotController tbc = new TelegramBotController();
 			tbc.sendMessage(message);
 		}
-
-		if ( between(cP, 0.1f, 1000f)){
-			message = "warming up"; 
-		}	
-
-		if ( between(cP, 1000f, 3000f)){
-			message = "start washing"; 
-		}	
-
-		if ( between(cP, 3000f, 10000f)){
-			message = "charge car"; 
-		}	
-		tbc.sendMessage(message);
+		
 		
 		return "sent :" + message;
 	}
-
+	
 
 	public static boolean between(Float variable, Float minValueInclusive, Float maxValueInclusive) {
 		return variable >= minValueInclusive && variable <= maxValueInclusive;

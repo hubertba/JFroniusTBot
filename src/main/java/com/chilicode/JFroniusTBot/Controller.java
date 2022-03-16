@@ -98,7 +98,7 @@ public class Controller {
 			pP = history.getCurrentPower();
 		}
 		history.setLastResponse(new Date());
-		if (data == null){
+		if (data == null && history.getRunning() == true){
 			history.setRunning(false);
 			history.setCurrentPower(0.0f); 
 			message = "nichts geht mehr .... gute nacht";
